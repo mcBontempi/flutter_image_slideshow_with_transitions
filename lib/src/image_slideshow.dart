@@ -17,6 +17,7 @@ class ImageSlideshow extends StatefulWidget {
     this.autoPlayInterval,
     this.isLoop = false,
     this.indicatorRadius = 3,
+    this.curve = Curves.easeIn,
   }) : super(key: key);
 
   /// The widgets to display in the [ImageSlideshow].
@@ -52,6 +53,9 @@ class ImageSlideshow extends StatefulWidget {
 
   /// Radius of CircleIndicator.
   final double indicatorRadius;
+
+  /// Curve to use during animation
+  final Curve curve;
 
   @override
   ImageSlideshowState createState() => ImageSlideshowState();
@@ -96,7 +100,7 @@ class ImageSlideshowState extends State<ImageSlideshow> {
       _pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 350),
-        curve: Curves.easeIn,
+        curve: widget.curve,
       );
     }
   }
